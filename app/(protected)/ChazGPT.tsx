@@ -2,6 +2,7 @@
 
 import { useChat } from "ai/react";
 import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 
 export default function ChazGPT() {
   const [open, setOpen] = useState(false);
@@ -21,7 +22,7 @@ export default function ChazGPT() {
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-amber-400 shrink-0">
             <div className="flex items-center gap-2">
-              <span className="text-xl">🤖</span>
+              <Image src="/chazgpt_final.png" alt="ChazGPT" width={32} height={32} className="w-8 h-8 rounded-full object-cover" style={{ objectPosition: "center 15%" }} unoptimized />
               <div>
                 <p className="font-bold text-white text-sm">ChazGPT</p>
                 <p className="text-amber-100 text-xs">Powered by grudge</p>
@@ -94,15 +95,21 @@ export default function ChazGPT() {
       {/* Floating button */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-20 right-4 z-50 w-14 h-14 bg-amber-400 hover:bg-amber-500 active:scale-95 rounded-full shadow-xl flex items-center justify-center text-2xl transition-all"
+        className="fixed bottom-24 right-4 z-50 active:scale-95 flex flex-col items-center transition-all"
         aria-label="Open ChazGPT"
       >
         {open ? (
-          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <div className="w-14 h-14 bg-amber-400 hover:bg-amber-500 rounded-full shadow-xl flex items-center justify-center">
+            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
         ) : (
-          "🤖"
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/chazgpt_final.png" alt="ChazGPT" className="h-[100px] w-auto" style={{ filter: "drop-shadow(0 6px 14px rgba(0,0,0,0.4))" }} />
+            <span className="text-xs font-bold text-slate-600 -mt-4">ChazGPT</span>
+          </>
         )}
       </button>
     </>

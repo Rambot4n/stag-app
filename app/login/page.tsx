@@ -5,15 +5,16 @@ import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const router = useRouter();
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!name.trim()) {
-      setError("Please enter your name");
+    if (!firstName.trim() || !lastName.trim()) {
+      setError("Please enter your first and last name");
       return;
     }
     setLoading(true);
@@ -22,7 +23,7 @@ export default function LoginPage() {
     const res = await fetch("/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ surname: name, password }),
+      body: JSON.stringify({ firstName, lastName, password }),
     });
 
     if (res.ok) {
@@ -43,19 +44,35 @@ export default function LoginPage() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">
-              First name
-            </label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter your first name"
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
-              autoComplete="given-name"
-              autoCapitalize="words"
-            />
+          <div className="flex gap-3">
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                First name
+              </label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="Josh"
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
+                autoComplete="given-name"
+                autoCapitalize="words"
+              />
+            </div>
+            <div className="flex-1">
+              <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                Last name
+              </label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Ramsay"
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-base focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent"
+                autoComplete="family-name"
+                autoCapitalize="words"
+              />
+            </div>
           </div>
 
           <div>

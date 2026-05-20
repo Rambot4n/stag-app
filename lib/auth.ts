@@ -1,25 +1,30 @@
 import { createHmac } from "crypto";
 import { cookies } from "next/headers";
+import { supabase } from "./supabase";
 
 const SESSION_COOKIE = "stag_session";
 const SESSION_SECRET = process.env.SESSION_SECRET!;
 const STAG_PASSWORD = process.env.STAG_PASSWORD!;
-const ALLOWED_SURNAMES = (process.env.ALLOWED_NAMES ?? "")
-  .split(",")
-  .map((s) => s.trim().toLowerCase());
 
-export function validateCredentials(surname: string, password: string): boolean {
-  const surnameOk = ALLOWED_SURNAMES.includes(surname.trim().toLowerCase());
-  const passwordOk = password === STAG_PASSWORD;
-  return surnameOk && passwordOk;
+export async function validateCredentials(firstName: string, lastName: string, password: string): Promise<boolean> {
+  if (password !== STAG_PASSWORD) return false;
+
+  const { data } = await supabase
+    .from("guests")
+    .select("id")
+    .ilike("first_name", firstName.trim())
+    .ilike("last_name", lastName.trim())
+    .single();
+
+  return !!data;
 }
 
 function sign(value: string): string {
   return createHmac("sha256", SESSION_SECRET).update(value).digest("hex");
 }
 
-export function createSessionToken(surname: string): string {
-  const payload = surname.toLowerCase();
+export function createSessionToken(firstName: string, lastName: string): string {
+  const payload = `${firstName.trim()} ${lastName.trim()}`.toLowerCase();
   const sig = sign(payload);
   return Buffer.from(`${payload}:${sig}`).toString("base64url");
 }

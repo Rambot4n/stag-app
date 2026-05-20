@@ -9,7 +9,7 @@ export default async function HomePage() {
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-12 pb-2">
         <span className="text-sm font-medium text-slate-400">
-          {surname ? `Hey, ${surname.charAt(0).toUpperCase() + surname.slice(1)}` : ""}
+          {surname ? `Hey, ${surname.split(" ")[0].charAt(0).toUpperCase() + surname.split(" ")[0].slice(1)}` : ""}
         </span>
         <LogoutButton />
       </div>
