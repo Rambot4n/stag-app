@@ -35,8 +35,18 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6">
-      <div className="w-full max-w-sm">
+    <div className="h-screen relative flex flex-col items-center justify-center px-6 overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
+      >
+        <source src="/chaz_mankini.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-white/60" style={{ zIndex: 1 }} />
+      <div className="w-full max-w-sm" style={{ position: "relative", zIndex: 20 }}>
         <div className="text-center mb-10">
           <div className="text-6xl mb-4">🍺</div>
           <h1 className="text-2xl font-bold text-slate-800">Chaz&apos;s Stag</h1>
@@ -46,7 +56,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex gap-3">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">
+              <label className="block text-sm font-medium text-slate-900 mb-1.5">
                 First name
               </label>
               <input
@@ -60,7 +70,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="flex-1">
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">
+              <label className="block text-sm font-medium text-slate-900 mb-1.5">
                 Last name
               </label>
               <input
@@ -76,7 +86,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1.5">
+            <label className="block text-sm font-medium text-slate-900 mb-1.5">
               Password
             </label>
             <input
@@ -105,3 +115,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

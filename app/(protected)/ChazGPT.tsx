@@ -27,7 +27,7 @@ export default function ChazGPT() {
               </div>
               <div>
                 <p className="font-bold text-white text-sm">ChazGPT</p>
-                <p className="text-amber-100 text-xs">Powered by grudge</p>
+                <p className="text-amber-100 text-xs">Powered by custard</p>
               </div>
             </div>
             <button onClick={() => setOpen(false)} className="text-white hover:text-amber-100 p-1">
