@@ -35,7 +35,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="h-screen relative flex flex-col items-center justify-center px-6 overflow-hidden">
+    <div className="h-screen relative flex flex-col items-center px-6 overflow-hidden">
       <video
         autoPlay
         loop
@@ -46,14 +46,17 @@ export default function LoginPage() {
         <source src="/chaz_mankini.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-white/60" style={{ zIndex: 1 }} />
-      <div className="w-full max-w-sm" style={{ position: "relative", zIndex: 20 }}>
-        <div className="text-center mb-10">
-          <div className="text-6xl mb-4">🍺</div>
-          <h1 className="text-2xl font-bold text-slate-800">Chaz&apos;s Stag</h1>
-          <p className="text-slate-500 mt-1">Cologne, Germany 2026</p>
-        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      {/* Header - pinned near top */}
+      <div className="text-center pt-16 w-full" style={{ position: "relative", zIndex: 20 }}>
+        <div className="text-6xl mb-4">🍺</div>
+        <h1 className="text-2xl font-bold text-slate-800">Chaz&apos;s Stag</h1>
+        <p className="text-slate-500 mt-1">Cologne, Germany 2026</p>
+      </div>
+
+      {/* Form - centred in remaining space */}
+      <div className="flex-1 flex items-center justify-center w-full max-w-sm" style={{ position: "relative", zIndex: 20 }}>
+        <form onSubmit={handleSubmit} className="space-y-4 w-full">
           <div className="flex gap-3">
             <div className="flex-1">
               <label className="block text-sm font-medium text-black mb-1.5">
