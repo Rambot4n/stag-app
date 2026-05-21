@@ -112,7 +112,7 @@ export default function ChazGPT() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/chazgpt_v2.png" alt="ChazGPT" className="absolute object-cover" style={{ width: "130%", height: "130%", top: "50%", left: "50%", transform: "translate(-50%, -40%)" }} />
             </div>
-            <span className="text-xs font-bold text-slate-600 mt-1">ChazGPT</span>
+            <span className="text-xs font-bold text-slate-600 mt-1 bg-white/80 px-2 py-0.5 rounded-full">ChazGPT</span>
           </>
         )}
       </button>
