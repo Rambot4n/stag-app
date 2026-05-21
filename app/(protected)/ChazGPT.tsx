@@ -22,7 +22,9 @@ export default function ChazGPT() {
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 bg-amber-400 shrink-0">
             <div className="flex items-center gap-2">
-              <Image src="/chazgpt_final.png" alt="ChazGPT" width={32} height={32} className="w-8 h-8 rounded-full object-cover" style={{ objectPosition: "center 15%" }} unoptimized />
+              <div className="w-8 h-8 rounded-full bg-amber-400 overflow-hidden shrink-0">
+                <Image src="/chazgpt_v2.png" alt="ChazGPT" width={32} height={32} className="w-full h-full object-cover" style={{ objectPosition: "center 10%" }} unoptimized />
+              </div>
               <div>
                 <p className="font-bold text-white text-sm">ChazGPT</p>
                 <p className="text-amber-100 text-xs">Powered by grudge</p>
@@ -106,9 +108,11 @@ export default function ChazGPT() {
           </div>
         ) : (
           <>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/chazgpt_final.png" alt="ChazGPT" className="h-[100px] w-auto" style={{ filter: "drop-shadow(0 6px 14px rgba(0,0,0,0.4))" }} />
-            <span className="text-xs font-bold text-slate-600 -mt-4">ChazGPT</span>
+            <div className="w-20 h-20 rounded-full bg-amber-400 overflow-hidden shadow-xl relative" style={{ boxShadow: "0 6px 14px rgba(0,0,0,0.4)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/chazgpt_v2.png" alt="ChazGPT" className="absolute object-cover" style={{ width: "130%", height: "130%", top: "50%", left: "50%", transform: "translate(-50%, -40%)" }} />
+            </div>
+            <span className="text-xs font-bold text-slate-600 mt-1">ChazGPT</span>
           </>
         )}
       </button>
