@@ -56,7 +56,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="flex gap-3">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-slate-900 mb-1.5">
+              <label className="block text-sm font-medium text-black mb-1.5">
                 First name
               </label>
               <input
@@ -70,7 +70,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="flex-1">
-              <label className="block text-sm font-medium text-slate-900 mb-1.5">
+              <label className="block text-sm font-medium text-black mb-1.5">
                 Last name
               </label>
               <input
@@ -86,7 +86,7 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-900 mb-1.5">
+            <label className="block text-sm font-medium text-black mb-1.5">
               Password
             </label>
             <input
