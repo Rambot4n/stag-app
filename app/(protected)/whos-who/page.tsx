@@ -1,6 +1,8 @@
 import { supabase, Guest } from "@/lib/supabase";
 import Image from "next/image";
 
+export const dynamic = "force-dynamic";
+
 function displayName(guest: Guest): string {
   const parts = [guest.first_name];
   if (guest.nickname) parts.push(`"${guest.nickname}"`);
