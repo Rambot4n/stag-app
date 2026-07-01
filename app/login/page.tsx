@@ -2,17 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Baloo_2, Nunito, UnifrakturCook } from "next/font/google";
-
-const baloo = Baloo_2({ subsets: ["latin"], weight: ["800"] });
-const nunito = Nunito({ subsets: ["latin"], weight: ["400", "600", "700"] });
-const blackletter = UnifrakturCook({ subsets: ["latin"], weight: ["700"] });
-
-const INK = "#3E2C10";
-const MUTED = "#8A6A38";
-const ACCENT = "#F4912B";
-const WALL = "#ddcaa3";
-const BUNTING_COLORS = ["#F4912B", "#2E8BD6", "#3FB24B"];
+import { baloo, nunito, blackletter, INK, MUTED, ACCENT, WALL, BUNTING_COLORS } from "@/lib/theme";
 
 const BUNTING_COUNT = 9;
 const bunting = Array.from(
