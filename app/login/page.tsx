@@ -12,6 +12,7 @@ const INK = "#3E2C10";
 const MUTED = "#8A6A38";
 const FAINT = "#BE9F68";
 const ACCENT = "#F4912B";
+const WALL = "#ddcaa3";
 const BUNTING_COLORS = ["#F4912B", "#2E8BD6", "#3FB24B"];
 
 const BUNTING_COUNT = 9;
@@ -112,7 +113,7 @@ export default function LoginPage() {
           background: "transparent",
           border: `3px solid ${INK}`,
           borderRadius: "47% 47% 15px 15px / 23% 23% 15px 15px",
-          boxShadow: "0 7px 0 rgba(62,44,16,0.20)",
+          boxShadow: `0 7px 0 rgba(62,44,16,0.20), 0 0 0 9999px ${WALL}`,
         }}
       >
         {/* keystone */}
