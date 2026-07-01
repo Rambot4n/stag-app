@@ -53,7 +53,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className={`h-screen relative flex flex-col items-center px-6 overflow-hidden ${nunito.className}`}>
+    <div className={`h-screen relative flex flex-col items-center px-6 pb-6 overflow-hidden ${nunito.className}`}>
       <video
         autoPlay
         loop
@@ -102,9 +102,10 @@ export default function LoginPage() {
         style={{
           position: "relative",
           zIndex: 10,
+          marginTop: 24,
           background: "transparent",
           border: `3px solid ${INK}`,
-          borderRadius: "47% 47% 15px 15px / 23% 23% 15px 15px",
+          borderRadius: "47% 47% 15px 15px / 12% 12% 15px 15px",
           boxShadow: `0 7px 0 rgba(62,44,16,0.20), 0 0 0 9999px ${WALL}`,
         }}
       >
@@ -134,7 +135,7 @@ export default function LoginPage() {
           style={{
             background: "transparent",
             border: "13px solid #ddcaa3",
-            borderRadius: "45% 45% 12px 12px / 21% 21% 12px 12px",
+            borderRadius: "45% 45% 12px 12px / 11% 11% 12px 12px",
           }}
         >
           {/* recessed opening - transparent, so the video shows through */}
@@ -142,7 +143,7 @@ export default function LoginPage() {
             className="flex-1 flex flex-col"
             style={{
               border: `2.5px solid ${INK}`,
-              borderRadius: "44% 44% 8px 8px / 20% 20% 8px 8px",
+              borderRadius: "44% 44% 8px 8px / 10% 10% 8px 8px",
               overflow: "hidden",
               background: "transparent",
             }}
