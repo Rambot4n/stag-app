@@ -101,16 +101,17 @@ export default function LoginPage() {
         ))}
       </div>
 
-      {/* Stone arch doorway - decorative frame around the (unmoved) video + form */}
+      {/* Stone arch doorway - built entirely from borders (no fills), so the
+          interior stays genuinely transparent and the video shows through
+          the opening, not just around its outside edges */}
       <div
         className="w-full max-w-sm flex-1 flex flex-col"
         style={{
           position: "relative",
           zIndex: 10,
-          padding: "12px 12px 14px",
-          background: "linear-gradient(#ece0c6 0%, #ddcaa3 55%, #d1bc91 100%)",
+          background: "transparent",
           border: `3px solid ${INK}`,
-          borderRadius: "46% 46% 14px 14px / 22% 22% 14px 14px",
+          borderRadius: "47% 47% 15px 15px / 23% 23% 15px 15px",
           boxShadow: "0 7px 0 rgba(62,44,16,0.20)",
         }}
       >
@@ -130,86 +131,100 @@ export default function LoginPage() {
           }}
         />
 
-        {/* recessed opening - transparent, so the video shows through exactly as before */}
+        {/* stone band - thick coloured ring standing in for the gradient fill;
+            a true top-to-bottom gradient needs border-image, which doesn't
+            reliably clip to a border-radius this extreme across browsers, so
+            this uses a flat stone tone instead - revisit if the gradient look
+            is wanted badly enough to test border-image on-device */}
         <div
           className="flex-1 flex flex-col"
           style={{
-            border: `2.5px solid ${INK}`,
-            borderRadius: "44% 44% 8px 8px / 20% 20% 8px 8px",
-            overflow: "hidden",
             background: "transparent",
+            border: "13px solid #ddcaa3",
+            borderRadius: "45% 45% 12px 12px / 21% 21% 12px 12px",
           }}
         >
-          <div className="flex-1 flex items-center justify-center w-full" style={{ position: "relative", zIndex: 20 }}>
-            <form onSubmit={handleSubmit} className="space-y-4 w-full px-4">
-              <div className="flex gap-3">
-                <div className="flex-1">
+          {/* recessed opening - transparent, so the video shows through */}
+          <div
+            className="flex-1 flex flex-col"
+            style={{
+              border: `2.5px solid ${INK}`,
+              borderRadius: "44% 44% 8px 8px / 20% 20% 8px 8px",
+              overflow: "hidden",
+              background: "transparent",
+            }}
+          >
+            <div className="flex-1 flex items-center justify-center w-full" style={{ position: "relative", zIndex: 20 }}>
+              <form onSubmit={handleSubmit} className="space-y-4 w-full px-4">
+                <div className="flex gap-3">
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium mb-1.5" style={{ color: INK }}>
+                      First name
+                    </label>
+                    <input
+                      type="text"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      placeholder="Josh"
+                      className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
+                      style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
+                      autoComplete="given-name"
+                      autoCapitalize="words"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label className="block text-sm font-medium mb-1.5" style={{ color: INK }}>
+                      Last name
+                    </label>
+                    <input
+                      type="text"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      placeholder="Ramsay"
+                      className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
+                      style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
+                      autoComplete="family-name"
+                      autoCapitalize="words"
+                    />
+                  </div>
+                </div>
+
+                <div>
                   <label className="block text-sm font-medium mb-1.5" style={{ color: INK }}>
-                    First name
+                    Password
                   </label>
                   <input
-                    type="text"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    placeholder="Josh"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter the stag password"
                     className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
                     style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
-                    autoComplete="given-name"
-                    autoCapitalize="words"
+                    autoComplete="current-password"
                   />
                 </div>
-                <div className="flex-1">
-                  <label className="block text-sm font-medium mb-1.5" style={{ color: INK }}>
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Ramsay"
-                    className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
-                    style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
-                    autoComplete="family-name"
-                    autoCapitalize="words"
-                  />
-                </div>
-              </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-1.5" style={{ color: INK }}>
-                  Password
-                </label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter the stag password"
-                  className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
-                  style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
-                  autoComplete="current-password"
-                />
-              </div>
+                {error && (
+                  <p className="text-red-500 text-sm text-center">{error}</p>
+                )}
 
-              {error && (
-                <p className="text-red-500 text-sm text-center">{error}</p>
-              )}
-
-              <button
-                type="submit"
-                disabled={loading}
-                className={`w-full py-3.5 text-white disabled:opacity-50 mt-2 hover:brightness-95 active:brightness-90 transition ${baloo.className}`}
-                style={{
-                  background: ACCENT,
-                  border: `2.5px solid ${INK}`,
-                  borderRadius: 14,
-                  boxShadow: `0 5px 0 ${INK}`,
-                  fontSize: 17,
-                  letterSpacing: "0.01em",
-                }}
-              >
-                {loading ? "Logging in…" : "Let's go"}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full py-3.5 text-white disabled:opacity-50 mt-2 hover:brightness-95 active:brightness-90 transition ${baloo.className}`}
+                  style={{
+                    background: ACCENT,
+                    border: `2.5px solid ${INK}`,
+                    borderRadius: 14,
+                    boxShadow: `0 5px 0 ${INK}`,
+                    fontSize: 17,
+                    letterSpacing: "0.01em",
+                  }}
+                >
+                  {loading ? "Logging in…" : "Let's go"}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
