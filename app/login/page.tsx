@@ -10,7 +10,6 @@ const blackletter = UnifrakturCook({ subsets: ["latin"], weight: ["700"] });
 
 const INK = "#3E2C10";
 const MUTED = "#8A6A38";
-const FAINT = "#BE9F68";
 const ACCENT = "#F4912B";
 const WALL = "#ddcaa3";
 const BUNTING_COLORS = ["#F4912B", "#2E8BD6", "#3FB24B"];
@@ -160,7 +159,7 @@ export default function LoginPage() {
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
                       placeholder="Josh"
-                      className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
+                      className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#8A6A38]"
                       style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
                       autoComplete="given-name"
                       autoCapitalize="words"
@@ -175,7 +174,7 @@ export default function LoginPage() {
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
                       placeholder="Ramsay"
-                      className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
+                      className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#8A6A38]"
                       style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
                       autoComplete="family-name"
                       autoCapitalize="words"
@@ -192,7 +191,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter the stag password"
-                    className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#BE9F68]"
+                    className="w-full px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#F4912B] focus:border-transparent placeholder:text-[#8A6A38]"
                     style={{ border: `1px solid ${INK}`, borderRadius: 8, color: INK }}
                     autoComplete="current-password"
                   />
