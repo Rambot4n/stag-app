@@ -16,15 +16,10 @@ const WALL = "#ddcaa3";
 const BUNTING_COLORS = ["#F4912B", "#2E8BD6", "#3FB24B"];
 
 const BUNTING_COUNT = 9;
-const bunting = Array.from({ length: BUNTING_COUNT }, (_, i) => {
-  const t = i / (BUNTING_COUNT - 1);
-  return {
-    left: `${t * 100}%`,
-    bottom: 6 + 16 * Math.sin(Math.PI * t),
-    rotate: (t - 0.5) * 70,
-    color: BUNTING_COLORS[i % BUNTING_COLORS.length],
-  };
-});
+const bunting = Array.from(
+  { length: BUNTING_COUNT },
+  (_, i) => BUNTING_COLORS[i % BUNTING_COLORS.length]
+);
 
 export default function LoginPage() {
   const router = useRouter();
@@ -78,25 +73,22 @@ export default function LoginPage() {
         <p className="mt-1" style={{ color: MUTED }}>Cologne, Germany 2026</p>
       </div>
 
-      {/* Bunting, arced along the top of the doorway below */}
-      <div className="w-full max-w-sm" style={{ position: "relative", zIndex: 20, height: 30, marginTop: 6 }}>
+      {/* Bunting - straight row of pennants above the doorway */}
+      <div className="w-full max-w-sm flex justify-between items-start" style={{ position: "relative", zIndex: 20, marginTop: 6 }}>
         <div
           className="absolute w-full"
-          style={{ top: 0, height: 2, background: INK, opacity: 0.4 }}
+          style={{ top: 1, height: 2, background: INK, opacity: 0.4 }}
         />
-        {bunting.map((p, i) => (
+        {bunting.map((color, i) => (
           <div
             key={i}
             style={{
-              position: "absolute",
-              left: p.left,
-              bottom: p.bottom,
-              transform: `translateX(-50%) rotate(${p.rotate}deg)`,
+              marginTop: 2,
               width: 0,
               height: 0,
               borderLeft: "8px solid transparent",
               borderRight: "8px solid transparent",
-              borderTop: `14px solid ${p.color}`,
+              borderTop: `14px solid ${color}`,
             }}
           />
         ))}
@@ -155,7 +147,7 @@ export default function LoginPage() {
               background: "transparent",
             }}
           >
-            <div className="flex-1 flex items-center justify-center w-full" style={{ position: "relative", zIndex: 20 }}>
+            <div className="flex-1 flex items-end justify-center w-full pb-4" style={{ position: "relative", zIndex: 20 }}>
               <form onSubmit={handleSubmit} className="space-y-4 w-full px-4">
                 <div className="flex gap-3">
                   <div className="flex-1">
